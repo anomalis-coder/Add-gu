@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Love Code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  </head>
+  <body>
+    <!-- Background canvases -->
+    <canvas id="bg-canvas" class="bg-canvas"></canvas>
+    <canvas id="fx-canvas" class="fx-canvas"></canvas>
+
+    <!-- Loading screen -->
+    <section id="loading-screen" class="loading-screen">
+      <div class="loader-ring">
+        <div class="loader-core"></div>
+      </div>
+      <p class="loader-text" data-typewriter="Initializing love protocol...">Initializing love protocol...</p>
+    </section>
+
+    <!-- Countdown screen -->
+    <section id="countdown-screen" class="countdown-screen hidden">
+      <div class="countdown-glow"></div>
+      <div id="countdown-number" class="countdown-number">3</div>
+      <div class="countdown-sub">system boot</div>
+    </section>
+
+    <!-- "You Are My Love" reveal -->
+    <section id="love-reveal" class="love-reveal hidden">
+      <h1 id="love-text" class="love-text"></h1>
+      <div class="love-cursor"></div>
+    </section>
+
+    <!-- Main page -->
+    <main id="main-page" class="main-page hidden">
+      <header class="hero">
+        <div class="hero-badge" data-aos="fade-down">
+          <span class="hero-badge-dot"></span>
+          <span>// romantic_hacker.exe</span>
+        </div>
+        <h1 id="hero-title" class="hero-title" data-aos="zoom-in" data-aos-delay="200"></h1>
+        <div class="hero-cursor"></div>
+        <p id="hero-subtitle" class="hero-subtitle" data-aos="fade-up" data-aos-delay="600"></p>
+        <div class="hero-meta" data-aos="fade-up" data-aos-delay="900">
+          <span class="hero-meta-line"></span>
+          <span class="hero-meta-text">scroll to explore</span>
+          <span class="hero-meta-line"></span>
+        </div>
+      </header>
+
+      <section class="interactive-section">
+        <h2 class="section-title" data-aos="fade-up">Choose Your Path</h2>
+        <div class="button-grid">
+          <button class="love-btn love-btn--heart" data-modal="heart" data-aos="fade-up" data-aos-delay="100">
+            <span class="btn-icon">❤</span>
+            <span class="btn-label">Read My Heart</span>
+            <span class="btn-hint">cat /dev/heart</span>
+          </button>
+          <button class="love-btn love-btn--surprise" data-modal="surprise" data-aos="fade-up" data-aos-delay="200">
+            <span class="btn-icon">✦</span>
+            <span class="btn-label">Surprise</span>
+            <span class="btn-hint">sudo ./surprise.sh</span>
+          </button>
+          <button class="love-btn love-btn--secret" data-modal="secret" data-aos="fade-up" data-aos-delay="300">
+            <span class="btn-icon">✉</span>
+            <span class="btn-label">Secret Message</span>
+            <span class="btn-hint">decrypt --secret</span>
+          </button>
+          <button class="love-btn love-btn--letter" data-modal="letter" data-aos="fade-up" data-aos-delay="400">
+            <span class="btn-icon">❀</span>
+            <span class="btn-label">Love Letter</span>
+            <span class="btn-hint">open letter.txt</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="ending-section" id="ending-section">
+        <canvas id="ending-canvas" class="ending-canvas"></canvas>
+        <div class="ending-content" id="ending-content">
+          <div class="ending-sunflower" id="ending-sunflower"></div>
+          <h2 class="ending-title" id="ending-title">Thank You For Being Part Of My Story ❤️</h2>
+          <p class="ending-sub" id="ending-sub">every petal, every heartbeat — all for you</p>
+        </div>
+      </section>
+
+      <footer class="footer" data-aos="fade-up">
+        <p>Crafted with <span class="footer-heart">♥</span> in the language of code</p>
+        <p class="footer-sub">every particle is a thought of you</p>
+      </footer>
+    </main>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+      <div id="modal-card" class="modal-card">
+        <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
+        <div id="modal-content" class="modal-content"></div>
+      </div>
+    </div>
+
+    <!-- Music player -->
+    <div id="music-player" class="music-player">
+      <div class="music-disc" id="music-disc">
+        <div class="music-disc-inner"></div>
+        <div class="music-disc-dot"></div>
+      </div>
+      <div class="music-body">
+        <div class="music-info">
+          <span class="music-title" id="music-title">No track loaded</span>
+          <span class="music-status" id="music-status">Press play</span>
+        </div>
+        <div class="music-progress-wrap">
+          <span class="music-time" id="music-time-current">0:00</span>
+          <div class="music-progress" id="music-progress">
+            <div class="music-progress-fill" id="music-progress-fill"></div>
+          </div>
+          <span class="music-time" id="music-time-total">0:00</span>
+        </div>
+        <div class="music-controls">
+          <button class="music-btn music-btn--power" id="music-power" aria-label="Power" title="ON/OFF">
+            <span class="power-icon"></span>
+          </button>
+          <button class="music-btn music-btn--play" id="music-play" aria-label="Play/Pause">
+            <span class="play-icon" id="play-icon"></span>
+          </button>
+          <div class="music-volume">
+            <span class="volume-icon">♪</span>
+            <input type="range" id="music-volume" min="0" max="100" value="60" class="volume-slider" aria-label="Volume" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  </body>
+</html>

@@ -66,7 +66,7 @@ export function initBackground() {
     }
   }
 
-  let mx = w / 2, my = h / 2;
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
   let parallaxX = 0, parallaxY = 0;
   window.addEventListener('mousemove', (e) => {
     mx = e.clientX; my = e.clientY;
@@ -129,6 +129,7 @@ export function initBackground() {
       const px = p.x - parallaxX * 0.5;
       const py = p.y - parallaxY * 0.5;
       const r = Math.max(0.1, p.r * pulse);
+      if (!Number.isFinite(px) || !Number.isFinite(py)) continue;
       const grad = ctx.createRadialGradient(px, py, 0, px, py, r * 4);
       grad.addColorStop(0, p.color);
       grad.addColorStop(1, 'transparent');

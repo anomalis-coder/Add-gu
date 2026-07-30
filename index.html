@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   </head>
   <body>
     <!-- Background canvases -->
@@ -36,71 +35,13 @@
       <div class="love-cursor"></div>
     </section>
 
-    <!-- Main page -->
-    <main id="main-page" class="main-page hidden">
-      <header class="hero">
-        <div class="hero-badge" data-aos="fade-down">
-          <span class="hero-badge-dot"></span>
-          <span>// romantic_hacker.exe</span>
-        </div>
-        <h1 id="hero-title" class="hero-title" data-aos="zoom-in" data-aos-delay="200"></h1>
-        <div class="hero-cursor"></div>
-        <p id="hero-subtitle" class="hero-subtitle" data-aos="fade-up" data-aos-delay="600"></p>
-        <div class="hero-meta" data-aos="fade-up" data-aos-delay="900">
-          <span class="hero-meta-line"></span>
-          <span class="hero-meta-text">scroll to explore</span>
-          <span class="hero-meta-line"></span>
-        </div>
-      </header>
-
-      <section class="interactive-section">
-        <h2 class="section-title" data-aos="fade-up">Choose Your Path</h2>
-        <div class="button-grid">
-          <button class="love-btn love-btn--heart" data-modal="heart" data-aos="fade-up" data-aos-delay="100">
-            <span class="btn-icon">❤</span>
-            <span class="btn-label">Read My Heart</span>
-            <span class="btn-hint">cat /dev/heart</span>
-          </button>
-          <button class="love-btn love-btn--surprise" data-modal="surprise" data-aos="fade-up" data-aos-delay="200">
-            <span class="btn-icon">✦</span>
-            <span class="btn-label">Surprise</span>
-            <span class="btn-hint">sudo ./surprise.sh</span>
-          </button>
-          <button class="love-btn love-btn--secret" data-modal="secret" data-aos="fade-up" data-aos-delay="300">
-            <span class="btn-icon">✉</span>
-            <span class="btn-label">Secret Message</span>
-            <span class="btn-hint">decrypt --secret</span>
-          </button>
-          <button class="love-btn love-btn--letter" data-modal="letter" data-aos="fade-up" data-aos-delay="400">
-            <span class="btn-icon">❀</span>
-            <span class="btn-label">Love Letter</span>
-            <span class="btn-hint">open letter.txt</span>
-          </button>
-        </div>
-      </section>
-
-      <section class="ending-section" id="ending-section">
-        <canvas id="ending-canvas" class="ending-canvas"></canvas>
-        <div class="ending-content" id="ending-content">
-          <div class="ending-sunflower" id="ending-sunflower"></div>
-          <h2 class="ending-title" id="ending-title">Thank You For Being Part Of My Story ❤️</h2>
-          <p class="ending-sub" id="ending-sub">every petal, every heartbeat — all for you</p>
-        </div>
-      </section>
-
-      <footer class="footer" data-aos="fade-up">
-        <p>Crafted with <span class="footer-heart">♥</span> in the language of code</p>
-        <p class="footer-sub">every particle is a thought of you</p>
-      </footer>
-    </main>
-
-    <!-- Modals -->
-    <div id="modal-overlay" class="modal-overlay hidden">
-      <div id="modal-card" class="modal-card">
-        <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
-        <div id="modal-content" class="modal-content"></div>
+    <!-- Final LOVE screen -->
+    <section id="love-final" class="love-final hidden">
+      <div class="love-final-heart">
+        <span class="love-final-word">LOVE</span>
+        <span class="love-final-name">love michealia</span>
       </div>
-    </div>
+    </section>
 
     <!-- Hidden host for the YouTube IFrame audio player -->
     <div id="yt-host" style="position:fixed; width:1px; height:1px; left:-9999px; top:0; overflow:hidden; pointer-events:none;" aria-hidden="true"></div>
@@ -139,6 +80,5 @@
     </div>
 
     <script type="module" src="/main.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   </body>
 </html>

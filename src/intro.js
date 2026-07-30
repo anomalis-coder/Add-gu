@@ -20,7 +20,7 @@ export function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-// Intro sequence: loading -> countdown -> love reveal -> main page
+// Intro sequence: loading -> countdown -> "You Are My Love" -> 7s hold -> LOVE final
 export async function runIntro() {
   const loading = document.getElementById('loading-screen');
   const loaderText = loading.querySelector('.loader-text');
@@ -28,7 +28,7 @@ export async function runIntro() {
   const countdownNum = document.getElementById('countdown-number');
   const loveReveal = document.getElementById('love-reveal');
   const loveText = document.getElementById('love-text');
-  const mainPage = document.getElementById('main-page');
+  const loveFinal = document.getElementById('love-final');
 
   // Loading typewriter
   await typewriter(loaderText, 'Initializing love protocol...', 45);
@@ -49,19 +49,21 @@ export async function runIntro() {
     await sleep(900);
   }
 
-  // "You Are My Love ❤️"
+  // "You Are My Love"
   countdownScreen.classList.add('hidden');
   loveReveal.classList.remove('hidden');
-  await typewriter(loveText, 'You Are My Love ❤️', 110);
-  await sleep(1800);
+  await typewriter(loveText, 'You Are My Love', 90);
+  await sleep(7000);
 
-  // Transition to main page
+  // Transition to final LOVE screen
   loveReveal.style.transition = 'opacity 0.8s ease, filter 0.8s ease';
   loveReveal.style.opacity = '0';
   loveReveal.style.filter = 'blur(20px)';
-  mainPage.classList.remove('hidden');
-  await sleep(50);
-  mainPage.classList.add('reveal');
-  await sleep(800);
+  await sleep(500);
   loveReveal.classList.add('hidden');
+
+  // Reveal the final LOVE screen
+  loveFinal.classList.remove('hidden');
+  await sleep(80);
+  loveFinal.classList.add('show');
 }
